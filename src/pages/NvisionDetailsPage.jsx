@@ -1,34 +1,85 @@
 const highlights = [
   {
     title: 'About NVISION',
-    copy: 'A premium festival uniting creators, engineers, artists, and founders to co-build the next decade of technology.',
+    copy:
+      'NVISION is a hands-on technical festival bringing together innovators, engineers, and creators to design, build, and control intelligent robotic systems.',
   },
   {
     title: 'Theme',
-    copy: 'Gravity-defying experiences across AI, XR, cloud-native, and human-computer symphony. Everything is interactive.',
+    copy:
+      'From manual control to smart automation, the event explores sensor-driven robotics where machines perceive, decide, and react to their environment.',
   },
   {
     title: 'Highlights',
-    copy: 'Executive keynotes, midnight summits, global challenges, immersive installations, and zero-latency demo floors.',
+    copy:
+      'Live robot builds, sensor integration workshops, real-time testing arenas, coding challenges, and obstacle-navigation demonstrations.',
   },
   {
     title: 'Schedule',
-    copy: '3-day immersion with day-time labs, night-time summits, curated meetups, and one ultra-special closing act.',
+    copy:
+      'A focused multi-day experience featuring build sessions, guided labs, testing rounds, competitive challenges, and final live showcases.',
   },
   {
     title: 'Venue',
-    copy: 'Iconic National Institute of Technology Durgapur Convention Campus transformed with light architecture, ambient sound, and signature lounges.',
+    copy:
+      'National Institute of Technology Durgapur, Mahatma Gandhi Avenue, Durgapur, West Bengal, India.',
   },
+  
 ]
 
 const timeline = [
-  { time: '09:00', title: 'Immersive Arena Opens', detail: 'Guided walkthrough + live holographic welcome.' },
-  { time: '11:30', title: 'Keynote Pulse', detail: 'Inventors drop their latest releases and live demos.' },
-  { time: '14:00', title: 'Labs Go Live', detail: 'AI fabric, XR playground, robotics, cloud native sprint sessions.' },
-  { time: '18:30', title: 'Global Challenge', detail: 'Teams converge for a 36-hour build—mentors on deck.' },
-  { time: '22:00', title: 'Night Summit', detail: 'Skyline views, ambient soundscapes, founders-only lounges.' },
+  
+    { 
+      time: '09:00', 
+      title: 'Registration & Inauguration', 
+      detail: 'Participant registration followed by event inauguration and instructions.' 
+    },
+    { 
+      time: '10:00', 
+      title: 'Workshop Session', 
+      detail: 'Introduction to components, sensors, and control mechanisms for the robotic car.' 
+    },
+    { 
+      time: '12:30', 
+      title: 'Hands-on Build Session', 
+      detail: 'Participants assemble and wire the remote-controlled car with sensor modules.' 
+    },
+    { 
+      time: '14:30', 
+      title: 'Testing & Debugging', 
+      detail: 'Track testing, obstacle detection tuning, and code optimization.' 
+    },
+    { 
+      time: '16:30', 
+      title: 'Final Demonstration', 
+      detail: 'Live demonstration of sensor-based obstacle detection and navigation.' 
+    },
+    { 
+      time: '17:30', 
+      title: 'Results & Valedictory', 
+      detail: 'Evaluation results, feedback session, and certificate distribution.' 
+    }
+  
+  
 ]
-
+const perks=[
+  {
+    title: 'On-Site Event Support',
+    detail: 'Volunteers and coordinators available throughout the event for guidance and assistance.'
+  },
+  {
+    title: 'Faculty & Mentor Guidance',
+    detail: 'Support from faculty members and senior students during build and testing sessions.'
+  },
+  {
+    title: 'Live Testing Arena',
+    detail: 'Dedicated track for testing sensor-based obstacle detection and vehicle control.'
+  },
+  {
+    title: 'Project Display & Interaction',
+    detail: 'Participants showcase their models and explain working principles to peers and judges.'
+  },
+]
 function NvisionDetailsPage() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-blue-50">
@@ -45,8 +96,7 @@ function NvisionDetailsPage() {
             NVISION <span className="gradient-text">Immersion</span>
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600">
-            Every corner engineered for momentum: bold gradients, soft glassmorphism, and a timeline
-            that moves with you.
+            A focused 1-day event designed for hands-on learning, innovation, and community engagement.
           </p>
         </div>
 
@@ -90,27 +140,17 @@ function NvisionDetailsPage() {
 
           <div className="section-card">
             <p className="pill mb-4">Premium Perks</p>
-            <ul className="space-y-4 text-sm text-slate-600">
-              <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />
-                Dedicated concierge, invite-only lounges, and backstage access to founders.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />
-                Lightning mentorship pods with domain experts and product architects.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />
-                Night summit after-party with ambient music, skyline visuals, and gourmet bites.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />
-                Curated partner booths, interactive labs, and real-time prototypes to test.
-              </li>
-            </ul>
-            <div className="mt-6 rounded-2xl bg-rose-50/60 p-4 text-sm text-slate-600">
+            <ul className="space-y-4 text-sm text-slate-600 flex flex-row flex-wrap gap-3">
+              {perks.map((perk) => (
+                <li key={perk.title} className="flex items-start flex-row gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />
+                  <p className="text-sm text-slate-600">{perk.detail}</p>
+                </li>
+              ))}
+              </ul>
+              <div className="mt-6 rounded-2xl bg-rose-50/60 p-4 text-sm text-slate-600">
               <p className="font-semibold text-rose-500">Venue</p>
-              <p>National Institute of Technology Durgapur Convention Campus · Ultra-wide main hall · Immersive light architecture</p>
+              <p>DM Sen Auditorium,Beside ECE Department, National Institute of Technology Durgapur .</p>
             </div>
           </div>
         </div>

@@ -55,7 +55,7 @@ function CarouselPage() {
     if (paused) return
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
-    }, 10000)
+    }, 2000)
     return () => clearInterval(timer)
   }, [paused])
 
@@ -69,10 +69,9 @@ function CarouselPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
             Event Highlights
           </p>
-          <h2 className="text-4xl font-black text-slate-900 md:text-5xl">NVISION Moments</h2>
+          <h2 className="text-4xl font-black text-slate-900 md:text-5xl">NVISION past Moments</h2>
           <p className="max-w-2xl text-base text-slate-600">
-            A bright, minimal showcase of what unfolded last season—clean visuals, soft gradients,
-            and just the essentials.
+            An Event with Lots of Learning and Fun and you'll get to meet new people.
           </p>
         </div>
 

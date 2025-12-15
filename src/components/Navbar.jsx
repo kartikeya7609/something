@@ -3,9 +3,8 @@ import { useState } from 'react'
 
 const navItems = [
   { to: '/', label: 'Home' },
-  { to: '/countdown', label: 'Countdown' },
   { to: '/events', label: 'Highlights' },
-  { to: '/nvision', label: 'NVISION' },
+  { to: '/nvision', label: 'ABOUT' },
   { to: '/sponsors', label: 'Sponsors' },
   { to: '/contact', label: 'Contact' },
 ]

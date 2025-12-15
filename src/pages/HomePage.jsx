@@ -1,31 +1,57 @@
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import ieeeLogo from '../assets/ieee-logo.svg'
+
+const targetDate = new Date('2026-01-12T09:00:00')
+const registrationLink = 'https://forms.gle/your-registration-form'
 
 const features = [
   {
-    title: 'Immersive Tech',
-    desc: 'Live demos across AI, XR, robotics, and cloud-native stacks.',
-    accent: 'from-purple-400/70 to-indigo-500/80',
+    title: 'Autonomous Rover Build',
+    desc: 'Design and assemble remote-controlled cars equipped with sensors to detect and avoid real-world obstacles.',
+    accent: 'from-yellow-400/70 to-orange-500/80',
   },
   {
-    title: 'World-Class Speakers',
-    desc: 'Inventors, founders, and visionaries shaping what comes next.',
-    accent: 'from-cyan-400/70 to-blue-500/80',
+    title: 'Smart Sensor Integration',
+    desc: 'Work with ultrasonic and IR sensors to enable precise obstacle detection and intelligent navigation.',
+    accent: 'from-emerald-400/70 to-teal-500/80',
   },
   {
-    title: 'Future-Ready Labs',
-    desc: 'Hands-on studios with lightning-fast mentorship and prototyping.',
-    accent: 'from-pink-400/70 to-fuchsia-500/80',
+    title: 'Control, Code, Compete',
+    desc: 'Program movement logic, test responsiveness, and compete in real-time challenges on dynamic tracks.',
+    accent: 'from-indigo-400/70 to-purple-500/80',
   },
+  
 ]
 
 const moments = [
-  'Immersive AR arenas',
-  '24/7 innovation lounge',
-  'Global dev challenges',
-  'Signature night summit',
+  // 'Immersive AR arenas',
+  // '24/7 innovation lounge',
+  // 'Global dev challenges',
+  // 'Signature night summit',
 ]
 
 function HomePage() {
+  const calculateTimeLeft = useMemo(
+    () => () => {
+      const now = new Date().getTime()
+      const distance = Math.max(targetDate.getTime() - now, 0)
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24)
+      const minutes = Math.floor((distance / (1000 * 60)) % 60)
+      const seconds = Math.floor((distance / 1000) % 60)
+      return { days, hours, minutes, seconds }
+    },
+    [],
+  )
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
+
+  useEffect(() => {
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000)
+    return () => clearInterval(timer)
+  }, [calculateTimeLeft])
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-rose-50 to-blue-50">
       <div className="pointer-events-none absolute inset-0">
@@ -37,25 +63,33 @@ function HomePage() {
       <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl space-y-6">
-            <span className="pill">World Premiere Event</span>
+            <span className="pill">An IEEE SB NITD Event </span>
             <h1 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl lg:text-6xl">
               <span className="gradient-text">NVISION</span>
               <br />
-              Best In The World Tech Experience
+              A New Tech Experience
             </h1>
             <p className="text-lg text-slate-600 md:text-xl">
-              Step inside a festival of invention—limitless tech showcases, immersive labs, and the
-              brightest minds redefining what&apos;s possible.
+              A 1-day immersive tech event uniting various domains of Technology
             </p>
+            <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700">
+              <span className="rounded-full bg-white px-3 py-1 font-semibold text-rose-600">
+                Date: 12 January 2026
+              </span>
+              <span className="rounded-full bg-white px-3 py-1 font-semibold text-slate-700">
+                Venue: NIT Durgapur, West Bengal, India
+              </span>
+            </div>
             <div className="flex flex-wrap items-center gap-4">
-              <Link
-                to="/countdown"
-                className="rounded-full bg-gradient-to-r from-rose-500 via-red-500 to-orange-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(244,63,94,0.35)] transition hover:translate-y-[-1px]"
+              <a
+                href={registrationLink}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-gradient-to-r from-rose-600 via-red-500 to-orange-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(244,63,94,0.35)] transition hover:translate-y-[-1px]"
               >
-                View Event
-              </Link>
-              <Link
-                to="/events"
+                Register Now
+              </a>
+              <Link to="/events"
                 className="rounded-full border border-rose-200 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-rose-500 transition hover:bg-rose-50"
               >
                 Explore Events
@@ -84,7 +118,7 @@ function HomePage() {
               <div className="divider" />
               <div className="flex items-center justify-between text-sm text-slate-600">
                 <span>Access</span>
-                <span className="font-semibold text-rose-500">1 Day Immersion</span>
+                <span className="font-semibold text-rose-500">1 Day Event</span>
               </div>
               <div className="flex items-center justify-between text-sm text-slate-600">
                 <span>Location</span>
@@ -95,6 +129,36 @@ function HomePage() {
                 <span className="font-semibold text-rose-500">2026 Edition</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="section-card">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-500">
+                Countdown
+              </p>
+              <h3 className="text-2xl font-bold text-slate-900">NVISION Starts Soon</h3>
+            </div>
+            <img src={ieeeLogo} alt="IEEE" className="h-10 w-auto" />
+          </div>
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              { label: 'Days', value: timeLeft.days },
+              { label: 'Hours', value: timeLeft.hours },
+              { label: 'Minutes', value: timeLeft.minutes },
+              { label: 'Seconds', value: timeLeft.seconds },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-slate-200 bg-white/90 px-4 py-4 text-center shadow-[0_12px_30px_rgba(15,23,42,0.06)]"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {item.label}
+                </p>
+                <p className="mt-2 text-3xl font-black text-slate-900">{item.value}</p>
+              </div>
+            ))}
           </div>
         </div>
 

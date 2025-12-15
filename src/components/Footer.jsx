@@ -41,7 +41,6 @@ const socials = [
 
 const links = [
   { label: 'Home', to: '/' },
-  { label: 'Countdown', to: '/countdown' },
   { label: 'Events', to: '/events' },
   { label: 'NVISION', to: '/nvision' },
   { label: 'Sponsors', to: '/sponsors' },
