@@ -9,17 +9,17 @@ const features = [
   {
     title: 'Autonomous Rover Build',
     desc: 'Design and assemble remote-controlled cars equipped with sensors to detect and avoid real-world obstacles.',
-    accent: 'from-yellow-400/70 to-orange-500/80',
+    accent: 'from-yellow-300/70 to-orange-100/80',
   },
   {
     title: 'Smart Sensor Integration',
     desc: 'Work with ultrasonic and IR sensors to enable precise obstacle detection and intelligent navigation.',
-    accent: 'from-emerald-400/70 to-teal-500/80',
+    accent: 'from-emerald-200/70 to-teal-300/80',
   },
   {
     title: 'Control, Code, Compete',
     desc: 'Program movement logic, test responsiveness, and compete in real-time challenges on dynamic tracks.',
-    accent: 'from-indigo-400/70 to-purple-500/80',
+    accent: 'from-indigo-100/70 to-purple-200/80',
   },
   
 ]
@@ -166,11 +166,10 @@ function HomePage() {
           {features.map((feature) => (
             <div key={feature.title} className="section-card">
               <div
-                className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.accent}`}
+                className={`mb-4 flex flex-col items-center justify-center rounded-l bg-gradient-to-br ${feature.accent}`}
               >
-                <div className="h-8 w-8 rounded-xl bg-black/40" />
+                <h3 className="text-xl font-bold text-slate-900">{feature.title}</h3>
               </div>
-              <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
               <p className="mt-3 text-sm text-slate-600">{feature.desc}</p>
               <div className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-rose-500">
                 <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />

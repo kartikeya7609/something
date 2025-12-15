@@ -1,5 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
+import ieeeLogo from '../assets/ieee-logo.svg'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -24,9 +25,11 @@ function Navbar() {
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
         <Link to="/" className="flex items-center gap-2" onClick={close}>
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 via-red-500 to-amber-400 shadow-[0_10px_30px_rgba(244,63,94,0.35)]">
-            <span className="text-lg font-extrabold text-white">N</span>
-          </div>
+          <img
+            src={ieeeLogo}
+            alt="IEEE SB NIT Durgapur"
+            className="h-18 w-auto md:h-18"
+          />
           <div>
             <p className="text-lg font-extrabold leading-none text-slate-900">NVISION</p>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
