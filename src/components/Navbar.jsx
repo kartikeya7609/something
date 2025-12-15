@@ -67,7 +67,7 @@ function Navbar() {
             onClick={close}
             className="hidden rounded-full bg-gradient-to-r from-rose-500 via-red-500 to-orange-400 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(244,63,94,0.35)] transition hover:translate-y-[-1px] md:inline-block"
           >
-            View Event
+            Register Now
           </Link>
         </div>
       </div>
