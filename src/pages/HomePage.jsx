@@ -72,7 +72,8 @@ function HomePage() {
 
       {/* Hero area at TOP of page, above background */}
       <div className="relative min-h-[70vh]">
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
+        {/* pointer-events-none lets drag pass through to Canvas; we'll re-enable only on buttons */}
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16 pointer-events-none">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl space-y-6">
               <span className="pill">An IEEE SB NITD Event </span>
@@ -92,7 +93,7 @@ function HomePage() {
                   Hands-on robotics, coding labs, and live car simulations
                 </span>
               </div>
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4 pointer-events-auto">
                 <a
                   href={registrationLink}
                   target="_blank"
@@ -155,20 +156,20 @@ function HomePage() {
             className="rounded-lg bg-white/95 px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-white"
             onClick={() => setCarZoom((z) => Math.max(4, z - 0.5))}
           >
-            + Zoom
+            Zoom In
           </button>
           <button
             type="button"
             className="rounded-lg bg-white/95 px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-white"
             onClick={() => setCarZoom((z) => Math.min(12, z + 0.5))}
           >
-            − Zoom
+            Zoom Out
           </button>
         </div>
       </div>
 
-      {/* Rest of the page content below hero */}
-      <div className="relative z-10 mx-auto mt-10 flex max-w-6xl flex-col gap-12 px-4 pb-16 md:px-6">
+      {/* Rest of the page content below hero (allows drag to pass through to car) */}
+      <div className="relative z-10 mx-auto mt-10 flex max-w-6xl flex-col gap-12 px-4 pb-16 md:px-6 pointer-events-none">
         <div className="section-card">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>

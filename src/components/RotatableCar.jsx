@@ -22,7 +22,6 @@ function Car({ isDragging }) {
       carRef.current.rotation.y += delta * 0.3
     }
   })
-
   return (
     <group ref={carRef}>
       {/* Main Car Body */}
@@ -191,7 +190,6 @@ function Car({ isDragging }) {
 
 export default function RotatableCar({ zoom = 6 }) {
   const [isDragging, setIsDragging] = useState(false)
-
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 1.5, zoom]} fov={60} />
@@ -202,16 +200,19 @@ export default function RotatableCar({ zoom = 6 }) {
       <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={0.8} />
       <spotLight position={[-10, 5, -10]} angle={0.4} penumbra={1} intensity={0.5} />
       
-      {/* Car auto-rotates; OrbitControls let the user rotate/zoom with mouse */}
+      {/* Car auto-rotates via OrbitControls; user can rotate with mouse, zoom via buttons */}
       <Car isDragging={isDragging} />
 
       <OrbitControls
         enablePan={false}
-        enableZoom
+        enableZoom={false}
+        autoRotate
+        autoRotateSpeed={0.7}
         minDistance={4}
         maxDistance={12}
         onStart={() => setIsDragging(true)}
         onEnd={() => setIsDragging(false)}
+
       />
     </>
   )
