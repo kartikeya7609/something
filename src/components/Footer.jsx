@@ -40,12 +40,11 @@ const socials = [
 ]
 
 const links = [
-  { label: 'Home', to: '/' },
-  { label: 'Events', to: '/events' },
-  { label: 'NVISION', to: '/nvision' },
-  { label: 'Sponsors', to: '/sponsors' },
-  { label: 'Contact', to: '/contact' },
-  { label: 'IEEE SB NIT Durgapur', href: 'https://www.ieee-nitdgp.in/' },
+  { to: '/', label: 'Home' },
+  { to: '/events', label: 'Highlights' },
+  { to: '/nvision', label: 'ABOUT' },
+  { to: '/sponsors', label: 'Sponsors' },
+  { to: '/contact', label: 'Contact' },  { label: 'IEEE SB NIT Durgapur', href: 'https://www.ieee-nitdgp.in/' },
 ]
 
 function Footer() {
