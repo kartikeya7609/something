@@ -63,7 +63,7 @@ function CarouselPage() {
   const handleNext = () => setCurrent((prev) => (prev + 1) % slides.length)
 
   return (
-    <section className="bg-gradient-to-br from-white via-slate-50 to-blue-50">
+    <section className="relative">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-16 pt-12 md:px-6 md:pt-16">
         <div className="flex flex-col items-start gap-3">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">

@@ -18,12 +18,7 @@ const confirmedSponsors = [
 
 function SponsorsPage() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-cyan-50/40">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-60px] top-0 h-80 w-80 rounded-full bg-blue-200/40 blur-[120px] animate-blob" />
-        <div className="absolute right-[-60px] bottom-0 h-80 w-80 rounded-full bg-amber-200/40 blur-[120px] animate-blob" />
-      </div>
-
+    <section className="relative overflow-hidden">
       <div className="relative mx-auto flex max-w-5xl flex-col gap-10 px-4 pb-16 pt-12 md:px-6 md:pt-16">
         <div className="text-center">
           <span className="pill">Confirmed Sponsors</span>

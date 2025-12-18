@@ -91,7 +91,7 @@ function ContactPage() {
   }
 
   return (
-    <section className="bg-gradient-to-b from-white via-blue-50 to-cyan-50">
+    <section className="relative">
       <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 pb-16 pt-12 md:px-6 md:pt-16">
         <div className="flex flex-col gap-3">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">

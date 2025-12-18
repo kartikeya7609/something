@@ -82,13 +82,7 @@ const perks=[
 ]
 function NvisionDetailsPage() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-blue-50">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-10 top-0 h-80 w-80 rounded-full bg-blue-200/40 blur-[110px] animate-blob" />
-        <div className="absolute right-10 top-16 h-72 w-72 rounded-full bg-sky-200/40 blur-[110px] animate-blob" />
-        <div className="absolute bottom-[-80px] left-1/3 h-96 w-96 rounded-full bg-amber-200/40 blur-[120px] animate-blob" />
-      </div>
-
+    <section className="relative overflow-hidden">
       <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
         <div className="space-y-3 text-center">
           <span className="pill">Event Details</span>

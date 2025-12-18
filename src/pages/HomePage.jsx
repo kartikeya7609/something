@@ -74,75 +74,75 @@ function HomePage() {
       <div className="relative min-h-[70vh]">
         {/* pointer-events-none lets drag pass through to Canvas; we'll re-enable only on buttons */}
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16 pointer-events-none">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-2xl space-y-6">
-              <span className="pill">An IEEE SB NITD Event </span>
-              <h1 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl lg:text-6xl">
-                <span className="gradient-text">NVISION</span>
-                <br />
-                A New Tech Experience
-              </h1>
-              <p className="text-lg text-slate-600 md:text-xl">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl space-y-6">
+            <span className="pill">An IEEE SB NITD Event </span>
+            <h1 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+              <span className="gradient-text">NVISION</span>
+              <br />
+              A New Tech Experience
+            </h1>
+            <p className="text-lg text-slate-600 md:text-xl">
                 Drive into a 3D robotics experience – design, code, and race intelligent rovers in an immersive arena.
-              </p>
-              <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700">
-                <span className="rounded-full bg-white px-3 py-1 font-semibold text-blue-600">
+            </p>
+            <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700">
+              <span className="rounded-full bg-white px-3 py-1 font-semibold text-blue-600">
                   12 January 2026 • NIT Durgapur
-                </span>
-                <span className="rounded-full bg-white px-3 py-1 font-semibold text-slate-700">
+              </span>
+              <span className="rounded-full bg-white px-3 py-1 font-semibold text-slate-700">
                   Hands-on robotics, coding labs, and live car simulations
-                </span>
-              </div>
+              </span>
+            </div>
               <div className="flex flex-wrap items-center gap-4 pointer-events-auto">
-                <a
-                  href={registrationLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px]"
-                >
-                  Register Now
-                </a>
+              <a
+                href={registrationLink}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px]"
+              >
+                Register Now
+              </a>
                 <Link
                   to="/events"
-                  className="rounded-full border border-blue-200 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
-                >
-                  Explore Events
-                </Link>
+                className="rounded-full border border-blue-200 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
+              >
+                Explore Events
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-4 text-sm text-slate-600 md:max-w-xl">
+              {moments.map((item) => (
+                <div key={item} className="glass flex items-center gap-3 rounded-2xl px-3 py-3">
+                  <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="glass relative mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-slate-200 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.1)]">
+            <div className="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-200/60 to-blue-200/40 blur-[70px]" />
+            <div className="absolute -right-12 -bottom-10 h-28 w-28 rounded-full bg-gradient-to-br from-sky-200/60 to-amber-200/40 blur-[70px]" />
+            <div className="relative space-y-4">
+              <p className="pill inline-block">Premium Pass</p>
+              <h3 className="text-2xl font-bold text-slate-900">Experience the future, live.</h3>
+              <p className="text-sm text-slate-600">
+                Unlock curated labs, private lounges, and the NVISION night summit. The event built
+                for creators who move faster than light.
+              </p>
+              <div className="divider" />
+              <div className="flex items-center justify-between text-sm text-slate-600">
+                <span>Access</span>
+                <span className="font-semibold text-blue-500">1 Day Event</span>
               </div>
-              <div className="grid grid-cols-2 gap-4 text-sm text-slate-600 md:max-w-xl">
-                {moments.map((item) => (
-                  <div key={item} className="glass flex items-center gap-3 rounded-2xl px-3 py-3">
-                    <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
-                    <p>{item}</p>
-                  </div>
-                ))}
+              <div className="flex items-center justify-between text-sm text-slate-600">
+                <span>Location</span>
+                <span className="font-semibold text-blue-500">National Institute of Technology Durgapur</span>
+              </div>
+              <div className="flex items-center justify-between text-sm text-slate-600">
+                <span>Launch</span>
+                <span className="font-semibold text-blue-500">2026 Edition</span>
               </div>
             </div>
-
-            <div className="glass relative mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-slate-200 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.1)]">
-              <div className="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-200/60 to-blue-200/40 blur-[70px]" />
-              <div className="absolute -right-12 -bottom-10 h-28 w-28 rounded-full bg-gradient-to-br from-sky-200/60 to-amber-200/40 blur-[70px]" />
-              <div className="relative space-y-4">
-                <p className="pill inline-block">Premium Pass</p>
-                <h3 className="text-2xl font-bold text-slate-900">Experience the future, live.</h3>
-                <p className="text-sm text-slate-600">
-                  Unlock curated labs, private lounges, and the NVISION night summit. The event built
-                  for creators who move faster than light.
-                </p>
-                <div className="divider" />
-                <div className="flex items-center justify-between text-sm text-slate-600">
-                  <span>Access</span>
-                  <span className="font-semibold text-blue-500">1 Day Event</span>
-                </div>
-                <div className="flex items-center justify-between text-sm text-slate-600">
-                  <span>Location</span>
-                  <span className="font-semibold text-blue-500">National Institute of Technology Durgapur</span>
-                </div>
-                <div className="flex items-center justify-between text-sm text-slate-600">
-                  <span>Launch</span>
-                  <span className="font-semibold text-blue-500">2026 Edition</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -165,8 +165,8 @@ function HomePage() {
           >
             Zoom Out
           </button>
+          </div>
         </div>
-      </div>
 
       {/* Rest of the page content below hero (allows drag to pass through to car) */}
       <div className="relative z-10 mx-auto mt-10 flex max-w-6xl flex-col gap-12 px-4 pb-16 md:px-6 pointer-events-none">

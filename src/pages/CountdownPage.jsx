@@ -60,12 +60,7 @@ function CountdownPage() {
   }, [calculateTimeLeft])
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-slate-100/60">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute right-10 top-0 h-72 w-72 rounded-full bg-sky-200/60 blur-[120px] animate-blob" />
-        <div className="absolute left-[-100px] bottom-[-60px] h-96 w-96 rounded-full bg-blue-200/50 blur-[120px] animate-blob" />
-      </div>
-
+    <section className="relative overflow-hidden">
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-10 px-4 pb-16 pt-14 text-center md:px-6 md:pt-16">
         <div className="space-y-4">
           <span className="pill">Launching Soon</span>
