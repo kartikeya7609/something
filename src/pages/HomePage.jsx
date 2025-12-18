@@ -56,8 +56,8 @@ function HomePage() {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-red-500 via-purple-500 to-blue-600">
-      {/* 3D Car Background */}
-      <div className="absolute inset-0 z-0">
+      {/* 3D Car Background (interactive) */}
+      <div className="absolute inset-0 z-0 pointer-events-auto">
         <Canvas
           style={{ width: '100%', height: '100%' }}
           gl={{ alpha: true, antialias: true }}
@@ -75,7 +75,8 @@ function HomePage() {
         <div className="absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-blue-300/40 blur-[110px] animate-blob" />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
+      {/* Main content sits above but lets pointer events fall through by default */}
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16 pointer-events-none">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl space-y-6">
             <span className="pill">An IEEE SB NITD Event </span>
@@ -95,7 +96,7 @@ function HomePage() {
                 Venue: NIT Durgapur, West Bengal, India
               </span>
             </div>
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4 pointer-events-auto">
               <a
                 href={registrationLink}
                 target="_blank"
@@ -104,7 +105,8 @@ function HomePage() {
               >
                 Register Now
               </a>
-              <Link to="/events"
+              <Link
+                to="/events"
                 className="rounded-full border border-blue-200 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
               >
                 Explore Events

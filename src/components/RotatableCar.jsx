@@ -1,10 +1,19 @@
-import { useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useRef, useState, useMemo } from 'react'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
+import nvisionTexture from '../assets/Nvision_1st_slide.jpg'
 
 function Car({ isDragging }) {
   const carRef = useRef()
+  const texture = useLoader(THREE.TextureLoader, nvisionTexture)
+  
+  // Configure texture
+  useMemo(() => {
+    texture.wrapS = THREE.RepeatWrapping
+    texture.wrapT = THREE.RepeatWrapping
+    texture.repeat.set(1, 1)
+  }, [texture])
   
   // Auto-rotate when not being dragged
   useFrame((state, delta) => {
@@ -19,10 +28,10 @@ function Car({ isDragging }) {
       <mesh position={[0, 0, 0]} castShadow receiveShadow>
         <boxGeometry args={[3, 0.9, 1.4]} />
         <meshStandardMaterial 
-          color="#1a1a2e" 
-          metalness={0.9} 
-          roughness={0.1}
-          envMapIntensity={1.5}
+          map={texture}
+          metalness={0.3} 
+          roughness={0.4}
+          envMapIntensity={1.0}
         />
       </mesh>
 
@@ -30,9 +39,9 @@ function Car({ isDragging }) {
       <mesh position={[0, 0.7, 0]} castShadow receiveShadow>
         <boxGeometry args={[1.8, 0.7, 1.2]} />
         <meshStandardMaterial 
-          color="#16213e" 
-          metalness={0.95} 
-          roughness={0.08}
+          map={texture}
+          metalness={0.3} 
+          roughness={0.4}
         />
       </mesh>
 
@@ -64,9 +73,9 @@ function Car({ isDragging }) {
       <mesh position={[1.6, 0, 0]} castShadow receiveShadow>
         <boxGeometry args={[0.25, 0.5, 1.5]} />
         <meshStandardMaterial 
-          color="#0f3460" 
-          metalness={0.8} 
-          roughness={0.2}
+          map={texture}
+          metalness={0.3} 
+          roughness={0.4}
         />
       </mesh>
 
@@ -74,9 +83,9 @@ function Car({ isDragging }) {
       <mesh position={[-1.6, 0, 0]} castShadow receiveShadow>
         <boxGeometry args={[0.25, 0.5, 1.5]} />
         <meshStandardMaterial 
-          color="#0f3460" 
-          metalness={0.8} 
-          roughness={0.2}
+          map={texture}
+          metalness={0.3} 
+          roughness={0.4}
         />
       </mesh>
 
@@ -157,17 +166,17 @@ function Car({ isDragging }) {
       {/* Spoiler */}
       <mesh position={[-1.5, 0.6, 0]} castShadow>
         <boxGeometry args={[0.15, 0.25, 1.3]} />
-        <meshStandardMaterial color="#0f3460" metalness={0.9} roughness={0.15} />
+        <meshStandardMaterial map={texture} metalness={0.3} roughness={0.4} />
       </mesh>
 
       {/* Side Skirts */}
       <mesh position={[0, -0.3, 0.75]} castShadow>
         <boxGeometry args={[2.5, 0.1, 0.05]} />
-        <meshStandardMaterial color="#1a1a2e" metalness={0.8} roughness={0.2} />
+        <meshStandardMaterial map={texture} metalness={0.3} roughness={0.4} />
       </mesh>
       <mesh position={[0, -0.3, -0.75]} castShadow>
         <boxGeometry args={[2.5, 0.1, 0.05]} />
-        <meshStandardMaterial color="#1a1a2e" metalness={0.8} roughness={0.2} />
+        <meshStandardMaterial map={texture} metalness={0.3} roughness={0.4} />
       </mesh>
 
       {/* Hood Details */}
@@ -185,22 +194,24 @@ export default function RotatableCar() {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 2, 5]} fov={50} />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
-      <directionalLight position={[-5, 3, -5]} intensity={0.7} />
-      <pointLight position={[0, 5, 0]} intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={0.6} />
-      <spotLight position={[-10, 5, -10]} angle={0.4} penumbra={1} intensity={0.3} />
+      <PerspectiveCamera makeDefault position={[0, 1.5, 6]} fov={60} />
+      <ambientLight intensity={0.8} />
+      <directionalLight position={[5, 5, 5]} intensity={2.0} castShadow />
+      <directionalLight position={[-5, 3, -5]} intensity={1.0} />
+      <pointLight position={[0, 5, 0]} intensity={0.8} />
+      <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={0.8} />
+      <spotLight position={[-10, 5, -10]} angle={0.4} penumbra={1} intensity={0.5} />
       
       <Car isDragging={isDragging} />
       
       <OrbitControls
         ref={controlsRef}
-        enableZoom={false}
+        enableZoom={true}
         enablePan={false}
-        minPolarAngle={Math.PI / 3}
-        maxPolarAngle={Math.PI / 2.2}
+        minDistance={4}
+        maxDistance={10}
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={Math.PI / 1.8}
         autoRotate={false}
         onStart={() => setIsDragging(true)}
         onEnd={() => setIsDragging(false)}
