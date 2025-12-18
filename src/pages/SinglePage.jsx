@@ -624,35 +624,50 @@ function SinglePage() {
 
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             {/* Timeline: Slide from left */}
-            <motion.div 
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="section-card"
-            >
-              <p className="pill mb-4">Experience Path</p>
-              <h3 className="text-2xl font-bold text-slate-900">Signature Timeline</h3>
-              <div className="mt-6 space-y-6">
-                {timeline.map((entry, idx) => (
-                  <div key={entry.title} className="relative flex items-start gap-4">
-                    <div className="flex flex-col items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 text-sm font-semibold text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)]">
-                        {entry.time}
-                      </div>
-                      {idx < timeline.length - 1 && (
-                        <div className="mt-1 h-16 w-px bg-gradient-to-b from-blue-200 to-transparent" />
-                      )}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-blue-500">{entry.title}</p>
-                      <p className="text-sm text-slate-600">{entry.detail}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+           <motion.div 
+  initial={{ opacity: 0, x: -50 }} // Reduced distance for smoother feel
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className="relative p-8 rounded-3xl bg-white/60 border border-slate-100 shadow-2xl shadow-blue-900/5 backdrop-blur-xl"
+>
+  <div className="flex items-center gap-3 mb-8">
+    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    </span>
+    <div>
+      <p className="text-xs font-bold tracking-wider text-blue-600 uppercase">Experience Path</p>
+      <h3 className="text-xl font-bold text-slate-900">Signature Timeline</h3>
+    </div>
+  </div>
 
+  <div className="relative space-y-0 ml-2">
+    {timeline.map((entry, idx) => (
+      <div key={entry.title} className="group relative pb-10 last:pb-0 pl-10 border-l-2 border-slate-200 hover:border-blue-400 transition-colors duration-300">
+        
+        {/* The Dot: Positioned absolutely on the border line */}
+        <div className="absolute -left-[9px] top-0 transition-transform duration-300 group-hover:scale-110">
+          <div className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-white ring-4 ring-white">
+            <div className={`h-2.5 w-2.5 rounded-full shadow-sm ${idx === 0 ? 'bg-blue-500 animate-pulse' : 'bg-slate-300 group-hover:bg-blue-400'} transition-colors duration-300`} />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="-mt-1.5 transition-all duration-300 group-hover:translate-x-1">
+          <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-500 mb-1 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
+            {entry.time}
+          </span>
+          <p className="text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+            {entry.title}
+          </p>
+          <p className="mt-1 text-sm text-slate-500 leading-relaxed group-hover:text-slate-600">
+            {entry.detail}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</motion.div>
             {/* Perks: Slide from right */}
             <motion.div 
               initial={{ opacity: 0, x: 100 }}
