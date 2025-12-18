@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { motion } from 'framer-motion' // 1. Import Framer Motion
+import { motion } from 'framer-motion' 
 import RotatableCar from '../components/RotatableCar'
 import groupPhoto from '../assets/group_photo.jpg'
 import handsOnInnovationLabs from '../assets/last_slide.jpg'
@@ -309,8 +309,7 @@ function SinglePage() {
   }
 
   return (
-    <div className="relative overflow-x-hidden"> {/* Added overflow-x-hidden to prevent layout shift during slide-in */}
-      {/* Hero Section */}
+    <div className="relative overflow-x-hidden"> 
       <section
         id="home"
         className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20"
@@ -625,7 +624,7 @@ function SinglePage() {
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             {/* Timeline: Slide from left */}
            <motion.div 
-  initial={{ opacity: 0, x: -50 }} // Reduced distance for smoother feel
+  initial={{ opacity: 0, x: -50 }} 
   whileInView={{ opacity: 1, x: 0 }}
   viewport={{ once: true, margin: "-100px" }}
   transition={{ duration: 0.6, ease: "easeOut" }}
@@ -645,7 +644,6 @@ function SinglePage() {
     {timeline.map((entry, idx) => (
       <div key={entry.title} className="group relative pb-10 last:pb-0 pl-10 border-l-2 border-slate-200 hover:border-blue-400 transition-colors duration-300">
         
-        {/* The Dot: Positioned absolutely on the border line */}
         <div className="absolute -left-[9px] top-0 transition-transform duration-300 group-hover:scale-110">
           <div className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-white ring-4 ring-white">
             <div className={`h-2.5 w-2.5 rounded-full shadow-sm ${idx === 0 ? 'bg-blue-500 animate-pulse' : 'bg-slate-300 group-hover:bg-blue-400'} transition-colors duration-300`} />
