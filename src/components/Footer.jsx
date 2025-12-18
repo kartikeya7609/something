@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 
 const socials = [
   {
@@ -40,12 +39,20 @@ const socials = [
 ]
 
 const links = [
-  { to: '/', label: 'Home' },
-  { to: '/events', label: 'Highlights' },
-  { to: '/nvision', label: 'ABOUT' },
-  { to: '/sponsors', label: 'Sponsors' },
-  { to: '/contact', label: 'Contact' },  { label: 'IEEE SB NIT Durgapur', href: 'https://www.ieee-nitdgp.in/' },
+  { href: '#home', label: 'Home' },
+  { href: '#highlights', label: 'Highlights' },
+  { href: '#about', label: 'ABOUT' },
+  { href: '#contact', label: 'Contact' },
+  { label: 'IEEE SB NIT Durgapur', href: 'https://www.ieee-nitdgp.in/' },
 ]
+
+const handleScroll = (e, href) => {
+  e.preventDefault()
+  const element = document.querySelector(href)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
 
 function Footer() {
   return (
@@ -63,7 +70,7 @@ function Footer() {
 
         <div className="flex flex-wrap items-center gap-4 text-sm text-slate-300/80">
           {links.map((link) => (
-            link.href ? (
+            link.href.startsWith('http') ? (
               <a
                 key={link.label}
                 href={link.href}
@@ -74,13 +81,14 @@ function Footer() {
                 {link.label}
               </a>
             ) : (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="transition hover:text-blue-200 hover:underline"
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+                className="transition hover:text-blue-200 hover:underline cursor-pointer"
               >
                 {link.label}
-              </Link>
+              </a>
             )
           ))}
         </div>

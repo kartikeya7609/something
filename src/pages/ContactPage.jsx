@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
+import { motion } from 'framer-motion'
 
 // Initialize EmailJS - Get public key from environment variable or set it directly here
-// Option 1: Set in .env file as VITE_EMAILJS_PUBLIC_KEY=your_key_here
-// Option 2: Replace 'YOUR_PUBLIC_KEY' below with your actual EmailJS Public Key
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'x5ns0x845LwLgna6x'
 
 function ContactPage() {
@@ -48,7 +47,6 @@ function ContactPage() {
         'service_mdjy4m6',
         'template_xfhx27s',
         {
-          // Try multiple common variable name formats
           from_name: formData.name,
           user_name: formData.name,
           name: formData.name,
@@ -74,7 +72,6 @@ function ContactPage() {
       console.error('EmailJS Error:', error)
       let errorMessage = 'Sorry, there was an error sending your message. Please try again later.'
       
-      // Provide more specific error messages
       if (error.text) {
         errorMessage = `Error: ${error.text}`
       } else if (error.message) {
@@ -91,9 +88,17 @@ function ContactPage() {
   }
 
   return (
-    <section className="relative">
+    <section className="relative overflow-x-hidden">
       <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 pb-16 pt-12 md:px-6 md:pt-16">
-        <div className="flex flex-col gap-3">
+        
+        {/* Header Animation - Fades and slides up */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col gap-3"
+        >
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
             Contact Us
           </p>
@@ -115,10 +120,18 @@ function ContactPage() {
             <span>+91 7439 652 300</span>
             <span>+91 6290 292 166</span>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="section-card flex flex-col gap-5">
+          
+          {/* Left Side: Animation from left to middle */}
+          <motion.div 
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="section-card flex flex-col gap-5"
+          >
             <h2 className="text-2xl font-semibold text-slate-900">Send a Message</h2>
             {submitStatus.type && (
               <div
@@ -188,9 +201,16 @@ function ContactPage() {
                 {isSubmitting ? 'Sending...' : 'Submit'}
               </button>
             </form>
-          </div>
+          </motion.div>
 
-          <div className="section-card flex flex-col gap-4">
+          {/* Right Side: Animation from right to middle */}
+          <motion.div 
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="section-card flex flex-col gap-4"
+          >
             <h2 className="text-2xl font-semibold text-slate-900">Location</h2>
             <p className="text-sm text-slate-600">
               Mahatma Gandhi Avenue, Durgapur, West Bengal, India
@@ -213,7 +233,8 @@ function ContactPage() {
               <span>Mahatma Gandhi Avenue</span>
               <span>Durgapur, West Bengal, India</span>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
@@ -221,4 +242,3 @@ function ContactPage() {
 }
 
 export default ContactPage
-
